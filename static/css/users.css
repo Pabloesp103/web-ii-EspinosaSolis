@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+}
+
+.container div {
+    text-align: center;
+    color: green;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.div2 {
+    display: inline-flex;
+    gap: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.foto {
+    padding-top: 10px;
+}
