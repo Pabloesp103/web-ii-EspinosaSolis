@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="Main-Container">
+    <div class="Title-Container">
+        <h1 class="Main-Title">Bienvenido a mi proyecto en Django!</h1>
+        <p>Aqui puedes administrar a tus usuarios de manera facil y rapida! Da click en las opciones para poder administrarlos.</p>
+    </div>
+    <div>
+        <h2 class="Sec-Title">En esta pagina puedes:</h2>
+        <div class="Multi-Container">
+            <div class="Feature-Container">
+                <h3 class="Feature">Visualizar a tus usuarios</h3>
+            </div>
+            <div class="Feature-Container">
+                <h3 class="Feature">Crear usuarios nuevos</h3>
+            </div>
+            <div class="Feature-Container">
+                <h3 class="Feature">Editar usuarios ya existentes</h3>
+            </div>
+        </div>
+        <div class="Multi-Container">
+            <a href="{% url 'usersIndex' %}" class="btn1">
+                Lista de Usuarios
+            </a>
+            <a href="{% url 'createUser' %}" class="btn2">
+                Crear un usuario
+            </a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

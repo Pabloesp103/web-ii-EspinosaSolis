@@ -1,0 +1,9 @@
+<nav style="text-align: center; padding: 20px; background-color: #c46e6e; margin-bottom: 25px;">
+    <div class="container mx-auto flex justify-between items-center" style="display: flex; flex-direction: row; align-items: center; padding-left: 5rem;">
+        <a href="/" class="Nav-Title" style="text-align: left; padding-left: 20px;">Django App</a>
+        <div class="Link-Container" style="display: flex; gap: 45px; margin-left: auto; padding-right: 5rem;">
+            <a href="{% url 'usersIndex' %}" class="Nav-Link">Lista de Usuarios</a>
+            <a href="{% url 'indexOrders' %}" class="Nav-Link">Lista de Orders</a>
+        </div>
+    </div>
+</nav>

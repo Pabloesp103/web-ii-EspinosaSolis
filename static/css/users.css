@@ -10,13 +10,16 @@
     font-size: 20px;
     border: 1px solid black;
 }
+.container div img {
+    width: 100%;
+}
 
 .titulo {
     text-align: center;
 }
 
 .div2 {
-    display: inline-flex;
+  
     gap: 2rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -24,4 +27,42 @@
 
 .foto {
     padding-top: 10px;
+    width: 150px;
+    height: 150px;
 }
+
+/* nuevo mainindex*/
+
+.Title-Container {
+    text-align: center;
+}
+
+.Sec-Title {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.Multi-Container {
+    margin-top: 3rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: row; 
+    gap: 7rem;
+    margin-bottom: 5rem;
+}
+
+.Multi-Container .btn1 .btn2 {
+width: 40px;
+height: 70px;
+background-color:cadetblue;
+color: white; 
+display: inline;
+text-align: center;
+border-radius: 10px;
+}
+
+.Multi-Container .btn1{
+    margin-right: 40px;
+}
+
+/* header */
