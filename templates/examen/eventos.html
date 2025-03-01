@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/examen.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h1 class="titulo">Eventos</h1>
+
+<div class="container">
+    {% for item in Eventos %}
+
+    <div class="user_card_container">
+        <div>
+            <p>Evento</p>
+            {% load static %}
+            <img class="foto" src="{% static 'img/evento.jpg' %}" alt="">
+        </div>
+        <div>
+            <p><strong>Nombre</strong> <br> {{item.name}}</p>
+            <p><strong>Fecha de Inicio</strong> <br> {{item.fecha_inicio}}</p>
+            <p><strong>Fecha de Fin</strong> <br> {{item.fecha_fin}}</p>
+            <p><strong>Localidad</strong> <br> {{item.localidades_id.name}}</p>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endblock %}
