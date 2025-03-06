@@ -1,17 +1,91 @@
 .container {
     display: flex;
-    grid-template-columns: repeat(2, 1fr);
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 10rem; 
+    padding: 10px;
+}
+
+.container-b {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 10rem; 
+    padding: 10px;
+}
+
+.index-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 10px;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.index-container-b {
+    display: flex; 
+    gap: 10px;
+}
+
+.news-container {
+    flex: 1;
+    width: 100%;
+}
+
+.news-container1 {
+    margin-bottom: 20px;
+}
+
+.news-container2 {
+    flex: 1;
+    width: 100%;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 10px;
+    border: 1px solid rgb(64, 43, 43);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.extra-container {
     justify-content: center;
 }
+
 
 .container div {
     text-align: center;
     color: green;
     font-size: 20px;
-    border: 1px solid black;
 }
+
 .container div img {
     width: 100%;
+}
+
+.Nav-Link {
+    border: none;
+}
+
+.Link-Container {
+    border: none !important;
+}
+
+.object_container {
+    text-align: center;
+    color: green;
+    font-size: 20px;
+}
+
+.event-container {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 10px;
+    border: 1px solid rgb(64, 43, 43);
+    width: 25rem;
+    padding-bottom: 10px;
 }
 
 .titulo {
@@ -19,7 +93,6 @@
 }
 
 .div2 {
-  
     gap: 2rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -31,7 +104,42 @@
     height: 150px;
 }
 
-/* nuevo mainindex*/
+.index-foto-top1 {
+    flex: 1;
+    padding-top: 10px;
+    width: 750px;
+    height: 500px;
+}
+
+.index-foto-top2 {
+    flex: 1;
+    padding-top: 10px;
+    width: 500px;
+    height: 480px;
+}
+
+.index-foto-top2-1 {
+    flex: 2;
+    padding-top: 10px;
+    width: 500px;
+    height: 480px;
+}
+
+.index-foto-btm {
+    width: 100%;
+    height: 300px;
+}
+
+.event-image {
+    flex: 1;
+    width: 200px;
+    height: auto;
+}
+
+.event-image img {
+    width: 100%; 
+    height: 200px;
+}
 
 .Title-Container {
     text-align: center;
@@ -39,6 +147,23 @@
 
 .Sec-Title {
     margin-top: 5rem;
+    text-align: center;
+}
+
+.event-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.news-title {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.news-title2 {
+    font-size: 27px;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -65,4 +190,85 @@ border-radius: 10px;
     margin-right: 40px;
 }
 
-/* header */
+.descripcion {
+    font-size: 10px;
+    justify-content: left;
+}
+
+.news-descripcion {
+    font-size: 20px;
+}
+
+.event-details {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.compra-button {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-event-btn {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 1.5rem;
+    margin-left: 25rem;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1px;
+}
+
+.evento-button {
+    background-color: rgb(65, 73, 220);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-product-button {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-event-button {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1px;
+}
+

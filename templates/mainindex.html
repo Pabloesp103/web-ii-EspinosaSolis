@@ -2,40 +2,69 @@
 
 {% block content %}
 
-<div class="Main-Container">
-    <div class="Title-Container">
-        <h1 class="Main-Title">Bienvenido la pagina de eventos!</h1>
-        <p>Aqui puedes enterarte de todos los ventos que estan sucediendo en tu localidad, sus boletos y los productos que participaran!</p>
-    </div>
-    <div>
-        <h2 class="Sec-Title">En esta pagina puedes:</h2>
-        <div class="Multi-Container">
-            <div class="Feature-Container">
-                <h3 class="Feature">Ver los productos disponibles</h3>
-            </div>
-            <div class="Feature-Container">
-                <h3 class="Feature">Ver los eventos que estan sucediendo</h3>
-            </div>
-            <div class="Feature-Container">
-                <h3 class="Feature">Ver informacion de los boletos</h3>
-            </div>
-        </div>
-    </div>
+<div class="index-container">
     {% load static %}
-    <div class="Multi-Container">
-        <div></div>
-        <a href="{% url 'productos' %}" class="btn1">
-            Lista de Productos
-        </a>
-        <a href="{% url 'eventos' %}" class="btn2">
-            Lista de Eventos
-        </a>
-        <a href="{% url 'boletos' %}" class="btn2">
-            Lista de Boletos
-        </a>
-    </div>
+    <img class="index-foto-top1" src="{% static 'img/carn2.jpg' %}" alt="">
+    <img class="index-foto-top1" src="{% static 'img/carn4.jpg' %}" alt="">
+</div>
+<div class="index-container">
+    {% load static %}
+    <img class="index-foto-top2" src="{% static 'img/carn1.jpg' %}" alt="">
+    <img class="index-foto-top2" src="{% static 'img/carn3.jpg' %}" alt="">
+    <img class="index-foto-top2-1" src="{% static 'img/carn5.jpg' %}" alt="">
 </div>
 
+<h1 class="titulo">Noticias</h1>
+
+<div class="index-container-b">
+ <div class="news-container">
+    <div class="news-container1">
+        <img class="index-foto-btm" src="{% static 'img/carn6.jpg' %}" alt="">
+        <p class="news-title">Noticia</p>
+        <p class="news-descripcion"><strong>Descripcion: </strong> Lorem ipsum dolor sit amet  consectetur, adipisicing elit. Facilis non cum illum dolores nihil nostrum voluptas aperiam mollitia, odio saepe inventore dolorum magnam eum hic iure optio ratione ipsum ducimus.</p>
+    </div>
+    <div class="news-container1">
+        <img class="index-foto-btm" src="{% static 'img/carn6.jpg' %}" alt="">
+        <p class="news-title">Noticia</p>
+        <p class="news-descripcion"><strong>Descripcion: </strong> Lorem ipsum dolor sit amet  consectetur, adipisicing elit. Facilis non cum illum dolores nihil nostrum voluptas aperiam mollitia, odio saepe inventore dolorum magnam eum hic iure optio ratione ipsum ducimus.</p>
+    </div>
+ </div>
+
+ <div class="news-container">
+    <div class="news-container2">
+        <div class="event-image">
+            <img src="{% static 'img/evento.jpg' %}" alt="Evento">
+        </div>
+        <div class="event-details">
+            <p class="news-title2">Evento #1</p>
+            <p class="news-descripcion"><strong>Localidad: </strong> </p>
+            <p class="news-descripcion"><strong>Descripcion: </strong> Lorem ipsum dolor sit amet  consectetur, adipisicing elit. Facilis non cum illum dolores nihil nostrum voluptas aperiam mollitia, odio saepe inventore dolorum magnam eum hic iure optio ratione ipsum ducimus.</p>
+        </div>
+    </div>
+
+    <div class="news-container2">
+        <div class="event-image">
+            <img src="{% static 'img/evento.jpg' %}" alt="Evento">
+        </div>
+        <div class="event-details">
+            <p class="news-title2">Evento #1</p>
+            <p class="news-descripcion"><strong>Localidad: </strong> </p>
+            <p class="news-descripcion"><strong>Descripcion: </strong> Lorem ipsum dolor sit amet  consectetur, adipisicing elit. Facilis non cum illum dolores nihil nostrum voluptas aperiam mollitia, odio saepe inventore dolorum magnam eum hic iure optio ratione ipsum ducimus.</p>
+        </div>
+    </div>
+
+    <div class="news-container2">
+        <div class="event-image">
+            <img src="{% static 'img/evento.jpg' %}" alt="Evento">
+        </div>
+        <div class="event-details">
+            <p class="news-title2">Evento #1</p>
+            <p class="news-descripcion"><strong>Localidad: </strong> </p>
+            <p class="news-descripcion"><strong>Descripcion: </strong> Lorem ipsum dolor sit amet  consectetur, adipisicing elit. Facilis non cum illum dolores nihil nostrum voluptas aperiam mollitia, odio saepe inventore dolorum magnam eum hic iure optio ratione ipsum ducimus.</p>
+        </div>
+    </div>
+ </div>
+</div>
 
 {% endblock %}
 

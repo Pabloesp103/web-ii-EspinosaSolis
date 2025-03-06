@@ -12,26 +12,9 @@
 <div class="container">
     {% for item in Boleto %}
 
-    <div class="user_card_container">
-        <div>
-            <p>Boleto</p>
-            {% load static %}
-            <img class="foto" src="{% static 'img/boleto.jpg' %}" alt="">
-        </div>
-        <div>
-            <p><strong>Precio</strong> <br> {{item.precio}}</p>
-            <p><strong>Tipo de boleto</strong> <bxr> {{item.tipo_boleto_id}}</p>
-            <p><strong>Para evento</strong> <br> {{item.evento_id.name}}</p>
-            <p><strong>Fecha</strong> <br> {{item.fecha}}</p>
-        </div>
-    </div>
+    {% include 'components/boletoCard.html' with id=item.id localidad_evento=item.evento_id.localidades_id.name precio=item.precio %}
 
     {% endfor %}
 
 </div>
 {% endblock %}
-
-precio = models.DecimalField(max_digits=10, decimal_places=2)
-tipo_boleto_id = models.IntegerField(default=1)
-evento_id = models.ForeignKey(eventos, on_delete=models.CASCADE)
-fecha = models.DateTimeField(auto_now_add=True, blank=True)

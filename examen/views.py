@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from .models import boletos, eventos, localidades, productos
 import json
+import datetime as dt
 
 # Create your views here.
 def mainindex(request):
@@ -43,3 +44,36 @@ def Producto(request):
     }
 
     return render(request, 'examen/productos.html', data)
+
+
+
+
+
+
+
+
+
+def crear_evento(request):
+    Localidades = localidades.objects.all()
+    eventos_recientes = eventos.objects.order_by('-id')[0:5]
+
+    data = {
+        "Localidades": Localidades,
+        "Eventos": eventos_recientes
+    }
+
+    return render(request, 'eventos_create.html', data)
+
+
+def crear_producto(request):
+    Today = dt.date.today()
+    
+    Localidades = localidades.objects.all()
+    productos_recientes = productos.objects.filter(created_at__gt=Today).order_by('-created_at').all()
+
+    data = {
+        "Localidades": Localidades,
+        "Productos": productos_recientes
+    }
+
+    return render(request, 'productos_create.html', data)

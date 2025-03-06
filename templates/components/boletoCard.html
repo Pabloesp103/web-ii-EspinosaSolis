@@ -1,0 +1,13 @@
+<div class="object_container">
+    <div>
+        {% load static %}
+        <img class="foto" src="{% static 'img/boleto.jpg' %}" alt="">
+    </div>
+    <div>
+        <p><strong>Boleto {{id}}</strong></p>
+        <p><strong>Localidad: </strong>  {{localidad_evento}}</p>
+        <p><strong>Precio: </strong>  ${{precio}}</p>
+        <button class="compra-button">Comprar</button>
+
+    </div>
+</div>

@@ -1,0 +1,83 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="index-container-b">
+    <div class="news-container">
+        <h2 class="titulo">Agregar producto</h2>
+        <form id="create-product" action="POST">
+            <label for="name">Nombre del producto</label>
+            <input type="text" placeholder="Nombre del producto" name="name" required>
+
+            <label for="precio">Precio</label>
+            <input type="text" placeholder="Precio" name="precio" required>
+
+            <label for="localidades_id">Localidad</label>
+            <select name="localidades_id" id="" required>
+                {% for item in localidad %}
+
+                    <option value="{{localidad.id}}">{{localidad.name}}</option>
+            
+                {% endfor %}
+            </select>
+        </form>
+        <div class="extra-container">
+            <button class="add-product-button">Agregar</button>
+        </div>
+    </div>
+
+    <div class="news-container">
+        <h2 class="titulo">Reglas</h2>
+        <p class="descripcion">Ningun campo debe de quedar vacio</p>
+        <p class="descripcion">Mostrar mensaje de guardado o error en caso de fallar</p>
+        <p class="descripcion">El envio de informacion debe ser por medio del metodo FETCH de JS</p>
+        <p class="descripcion">El boton "Eliminar" debera de hacerse por medio del metodo FETCH de JS</p>
+        <p class="descripcion">El precio del producto debe ser mayor a 0</p>
+        <p class="descripcion">Solo se pueden agregar 10 productos por dia</p>
+    </div>
+</div>
+
+
+<div class="results">
+    <p id="create-success">Producto agregado con exito</p>
+    <p id="create-error">Error, no se pudo agregar el producto: <span></span></p>
+    <p id="delete-success">Producto eliminado con exito</p>
+    <p id="delete-error">Error, no se pudo eliminar el producto: <span></span></p>
+</div>
+
+
+<h1>Productos recientemente agregados</h1>
+<div class="container">
+    <table class="create-table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Localidad</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="recent-products">
+            {% for item in Producto %}
+            <tr id="Producto {{item.id}}">
+                <th scope="row">{{item.name}}</th>
+                <td>{{item.precio}}</td>
+                <td>{{item.localidades_id.name}}</td>
+                <td><button  class="delete-button">Eliminar</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+</script>
+
+{% load static %}
+<script src=""></script>
+
+{% endblock %}

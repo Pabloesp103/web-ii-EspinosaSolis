@@ -12,18 +12,7 @@
 <div class="container">
     {% for item in Producto %}
 
-    <div class="user_card_container">
-        <div>
-            <p>Producto</p>
-            {% load static %}
-            <img class="foto" src="{% static 'img/producto.jpg' %}" alt="">
-        </div>
-        <div>
-            <p><strong>Nombre</strong> <br> {{item.name}}</p>
-            <p><strong>Precio</strong> <br> {{item.precio}}</p>
-            <p><strong>Localidad</strong> <br> {{item.localidades_id.name}}</p>
-        </div>
-    </div>
+    {% include 'components/productCard.html' with name=item.name precio=item.precio localidad=item.localidades_id.name %}
 
     {% endfor %}
 

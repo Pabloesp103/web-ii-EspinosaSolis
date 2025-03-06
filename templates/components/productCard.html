@@ -1,0 +1,12 @@
+<div class="user_card_container">
+    <div>
+        <p>Producto</p>
+        {% load static %}
+        <img class="foto" src="{% static 'img/producto.jpg' %}" alt="">
+    </div>
+    <div>
+        <p><strong>Nombre</strong> <br> {{name}}</p>
+        <p><strong>Precio</strong> <br> {{precio}}</p>
+        <p><strong>Localidad</strong> <br> {{localidad}}</p>
+    </div>
+</div>
