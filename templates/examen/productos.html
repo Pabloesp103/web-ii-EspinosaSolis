@@ -9,6 +9,10 @@
 
 <h1 class="titulo">Productos</h1>
 
+<div class="add-holder">
+    <a class="add-event-a" href="{% url 'productos_create' %}">Agregar producto</a>   
+</div>
+
 <div class="container">
     {% for item in Producto %}
 

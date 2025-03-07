@@ -47,12 +47,6 @@ def Producto(request):
 
 
 
-
-
-
-
-
-
 def crear_evento(request):
     Localidades = localidades.objects.all()
     eventos_recientes = eventos.objects.order_by('-id')[0:5]
@@ -69,7 +63,7 @@ def crear_producto(request):
     Today = dt.date.today()
     
     Localidades = localidades.objects.all()
-    productos_recientes = productos.objects.filter(created_at__gt=Today).order_by('-created_at').all()
+    productos_recientes = productos.objects.order_by('-id')[0:5]
 
     data = {
         "Localidades": Localidades,

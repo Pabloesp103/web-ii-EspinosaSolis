@@ -30,9 +30,17 @@
 
 #create-product {
     padding: 20px;
-    
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
+#create-product div {
+    padding: 20px;
+    gap: 10px;
+    width: 100%;
+}
 
 .news-container {
     flex: 1;
@@ -56,6 +64,7 @@
 }
 
 .extra-container {
+    display: flex;
     justify-content: center;
 }
 
@@ -314,6 +323,10 @@ border-radius: 10px;
     display: none;
 }
 
+.create-label {
+    width: 100%;
+}
+
 .create-table {
     border: 2px solid black;
     border-collapse: collapse;
@@ -324,4 +337,29 @@ border-radius: 10px;
 .create table td, th, tr {
     border: 1px solid black;
     padding: 8px;
-  }
+}
+
+#recent-events {
+    border: 1px solid black;
+}
+
+#recent-events tr, th, td{
+    border: 1px solid black;
+    justify-content: center;
+}
+
+#recent-products {
+    border: 1px solid black;
+    justify-content: center;
+}
+
+#recent-products tr, th, td{
+    border: 1px solid black;
+    justify-content: center;
+}
+
+.form-container input, select {
+    display: flex;
+    width: 95%;
+    font-size: 20px;
+}

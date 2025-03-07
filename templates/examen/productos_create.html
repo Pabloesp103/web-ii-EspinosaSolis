@@ -6,20 +6,27 @@
     <div class="news-container">
         <h2 class="titulo">Agregar producto</h2>
         <form id="create-product" action="POST">
-            <label for="name">Nombre del producto</label>
-            <input type="text" placeholder="Nombre del producto" name="name" required>
-
-            <label for="precio">Precio</label>
-            <input type="text" placeholder="Precio" name="precio" required>
-
-            <label for="localidades_id">Localidad</label>
-            <select name="localidades_id" id="" required>
-                {% for item in localidad %}
-
-                    <option value="{{localidad.id}}">{{localidad.name}}</option>
-            
-                {% endfor %}
-            </select>
+            <div class="form-container">
+                <label for="name" class="create-label">Nombre del producto</label>
+                <br>
+                <input type="text" placeholder="Nombre del producto" name="name" required>
+            </div>
+            <div class="form-container">
+                <label for="precio" class="create-label">Precio</label>
+                <br>
+                <input type="text" placeholder="Precio" name="precio" required>
+            </div>
+            <div class="form-container">
+                <label for="localidades_id" class="create-label">Localidad</label>
+                <br>
+                <select name="localidades_id" id="" required>
+                    {% for item in Localidades %}
+    
+                        <option value="{{item.id}}">{{item.name}}</option>
+                
+                    {% endfor %}
+                </select>
+            </div>
         </form>
         <div class="extra-container">
             <button class="add-product-button">Agregar</button>

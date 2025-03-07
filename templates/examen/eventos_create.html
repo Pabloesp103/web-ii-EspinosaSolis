@@ -6,23 +6,32 @@
     <div class="news-container">
         <h2 class="titulo">Agregar evento</h2>
         <form id="create-product" action="POST">
-            <label for="name">Nombre del evento</label>
-            <input type="text" placeholder="Nombre del evento" name="name" required>
-<br>
-            <label for="fecha_inicio">Fecha de inicio</label>
-            <input type="datetime-local" name="fecha_inicio" required>
-<br>
-            <label for="fecha_fin">Fecha de fin</label>
-            <input type="datetime-local" name="fecha_fin" required>
-<br>
-            <label for="localidades_id">Localidad</label>
-            <select name="localidades_id" id="" required>
-                {% for item in localidad %}
-
-                    <option value="{{localidad.id}}">{{localidad.name}}</option>
-            
-                {% endfor %}
-            </select>
+            <div class="form-container">
+                <label for="name" class="create-label">Nombre del evento</label>
+                <br>
+                <input type="text" placeholder="Nombre del evento" name="name" required>
+            </div>
+            <div  class="form-container">
+                <label for="fecha_inicio" class="create-label">Fecha de inicio</label>
+                <br>
+                <input type="datetime-local" name="fecha_inicio" required>
+            </div>
+            <div  class="form-container">
+                <label for="fecha_fin" class="create-label">Fecha de fin</label>
+                <br>
+                <input type="datetime-local" name="fecha_fin" required>
+            </div>
+            <div class="form-container">
+                <label for="localidades_id" class="create-label">Localidad</label>
+                <br>
+                <select name="localidades_id" id="" required>
+                    {% for item in Localidades %}
+    
+                        <option value="{{item.id}}">{{item.name}}</option>
+                
+                    {% endfor %}
+                </select>
+            </div>
         </form>
         <div class="extra-container">
             <button class="add-event-button">Agregar</button>
@@ -69,7 +78,7 @@
                 <td>{{item.fecha_inicio}}</td>
                 <td>{{item.fecha_fin}}</td>
                 <td>{{item.localidades_id.name}}</td>
-                <td><button  class="delete-button">Eliminar</button></td>
+                <td><button class="delete-button">Eliminar</button></td>
             </tr>
             {% endfor %}
         </tbody>
