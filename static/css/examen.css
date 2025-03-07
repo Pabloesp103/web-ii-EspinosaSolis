@@ -28,6 +28,12 @@
     gap: 10px;
 }
 
+#create-product {
+    padding: 20px;
+    
+}
+
+
 .news-container {
     flex: 1;
     width: 100%;
@@ -199,6 +205,11 @@ border-radius: 10px;
     font-size: 20px;
 }
 
+.rules {
+    font-size: 20px;
+    justify-content: left;
+}
+
 .event-details {
     flex: 2;
     display: flex;
@@ -272,3 +283,45 @@ border-radius: 10px;
     border-radius: 1px;
 }
 
+.add-event-a {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-holder {
+    margin-left: 25rem;
+    margin-bottom: 2.4rem;
+}
+
+#create-success {
+    display: none;
+}
+
+#create-error {
+    display: none;
+}
+
+#delete-success {
+    display: none;
+}
+
+#delete-error {
+    display: none;
+}
+
+.create-table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    border-spacing: 5px;
+    width: 100%;
+}
+
+.create table td, th, tr {
+    border: 1px solid black;
+    padding: 8px;
+  }

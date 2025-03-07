@@ -62,7 +62,7 @@ def crear_evento(request):
         "Eventos": eventos_recientes
     }
 
-    return render(request, 'eventos_create.html', data)
+    return render(request, 'examen/eventos_create.html', data)
 
 
 def crear_producto(request):
@@ -76,4 +76,4 @@ def crear_producto(request):
         "Productos": productos_recientes
     }
 
-    return render(request, 'productos_create.html', data)
+    return render(request, 'examen/productos_create.html', data)

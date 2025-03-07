@@ -8,13 +8,13 @@
         <form id="create-product" action="POST">
             <label for="name">Nombre del evento</label>
             <input type="text" placeholder="Nombre del evento" name="name" required>
-
+<br>
             <label for="fecha_inicio">Fecha de inicio</label>
             <input type="datetime-local" name="fecha_inicio" required>
-
+<br>
             <label for="fecha_fin">Fecha de fin</label>
             <input type="datetime-local" name="fecha_fin" required>
-
+<br>
             <label for="localidades_id">Localidad</label>
             <select name="localidades_id" id="" required>
                 {% for item in localidad %}
@@ -31,13 +31,13 @@
 
     <div class="news-container">
         <h2 class="titulo">Reglas</h2>
-        <p class="descripcion">Ningun campo debe de quedar vacio</p>
-        <p class="descripcion">La fecha Fin no puede ser menor que la fecha inicio</p>
-        <p class="descripcion">La fecha de inicio debe ser mayor al dia de hoy</p>
-        <p class="descripcion">No puedes agregar dos eventos seguidos de la misma localidad</p>
-        <p class="descripcion">Mostrar mensaje de guardado o de error en caso de fallar</p>
-        <p class="descripcion">El envio de informacion debe ser por medio del metodo FETCH de JS</p>
-        <p class="descripcion">El boton "Eliminar" debera de hacerse por medio del metodo FETCH de JS</p>
+        <p class="rules">Ningun campo debe de quedar vacio</p>
+        <p class="rules">La fecha Fin no puede ser menor que la fecha inicio</p>
+        <p class="rules">La fecha de inicio debe ser mayor al dia de hoy</p>
+        <p class="rules">No puedes agregar dos eventos seguidos de la misma localidad</p>
+        <p class="rules">Mostrar mensaje de guardado o de error en caso de fallar</p>
+        <p class="rules">El envio de informacion debe ser por medio del metodo FETCH de JS</p>
+        <p class="rules">El boton "Eliminar" debera de hacerse por medio del metodo FETCH de JS</p>
     </div>
 </div>
 

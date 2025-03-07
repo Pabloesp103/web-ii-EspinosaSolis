@@ -7,9 +7,13 @@
 
 {% block content %}
 
-<h1 class="titulo">Eventos</h1>
 
-<button class="add-event-btn">Agregar evento</button>
+    <h1 class="titulo">Eventos</h1>
+
+
+<div class="add-holder">
+    <a class="add-event-a" href="{% url 'eventos_create' %}">Agregar evento</a>   
+</div>
 
 <div class="container-b">
     {% for item in Eventos %}
