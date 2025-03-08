@@ -28,6 +28,20 @@
     gap: 10px;
 }
 
+#create-event {
+    padding: 20px;
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#create-event div {
+    padding: 20px;
+    gap: 10px;
+    width: 100%;
+}
+
 #create-product {
     padding: 20px;
     gap: 10px;
@@ -362,4 +376,12 @@ border-radius: 10px;
     display: flex;
     width: 95%;
     font-size: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.shown {
+    display: flex;
 }

@@ -5,7 +5,8 @@
 <div class="index-container-b">
     <div class="news-container">
         <h2 class="titulo">Agregar evento</h2>
-        <form id="create-product" action="POST">
+        <form id="create-event" action="POST">
+            <input type="hidden" id="csrf_token" value="{{csrf_token}}" />
             <div class="form-container">
                 <label for="name" class="create-label">Nombre del evento</label>
                 <br>
@@ -26,15 +27,13 @@
                 <br>
                 <select name="localidades_id" id="" required>
                     {% for item in Localidades %}
-    
                         <option value="{{item.id}}">{{item.name}}</option>
-                
                     {% endfor %}
                 </select>
             </div>
         </form>
         <div class="extra-container">
-            <button class="add-event-button">Agregar</button>
+            <button class="add-event-button" id="add-event-button">Agregar</button>
         </div>
     </div>
 
@@ -53,9 +52,9 @@
 
 <div class="results">
     <p id="create-success">Evento agregado con exito</p>
-    <p id="create-error">Error, no se pudo agregar el evento: <span></span></p>
+    <p id="create-error">Error, no se pudo agregar el evento: <span id="create-error-msg"></span></p>
     <p id="delete-success">Evento eliminado con exito</p>
-    <p id="delete-error">Error, no se pudo eliminar el evento: <span></span></p>
+    <p id="delete-error">Error, no se pudo eliminar el evento: <span id="delete-error-msg"></span></p>
 </div>
 
 
@@ -73,12 +72,12 @@
         </thead>
         <tbody id="recent-events">
             {% for item in Eventos %}
-            <tr id="Evento {{item.id}}">
+            <tr id="Evento-{{item.id}}">
                 <th scope="row">{{item.name}}</th>
                 <td>{{item.fecha_inicio}}</td>
                 <td>{{item.fecha_fin}}</td>
                 <td>{{item.localidades_id.name}}</td>
-                <td><button class="delete-button">Eliminar</button></td>
+                <td><button onclick="eventoDelete({{item.id}})" id="deleted-evento-{{item.id}}" class="delete-button">Eliminar</button></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -90,9 +89,11 @@
 
 {% block scripts %}
 <script>
+    const EVENTO_CREATE_URL = "{% url 'eventoCreateByFetch' %}"
+    const EVENTO_DELETE_URL = "{% url 'eventoDeleteByFetch' %}"
 </script>
 
 {% load static %}
-<script src=""></script>
+<script src="{% static 'js/eventos.js' %}"></script>
 
 {% endblock %}
