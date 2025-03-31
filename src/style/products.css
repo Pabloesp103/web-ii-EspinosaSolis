@@ -1,0 +1,34 @@
+.product-list-item {
+    display: flex;
+    flex-direction: row;
+    row-gap: 1rem;
+    width: 80%;
+    border: 1px red solid;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.product-image {
+    width: 35%;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.product-details {
+    width: 65%;
+    padding: 10px;
+}
+
+.product-details h4 {
+    font-weight: bold;
+    text-align: justify;
+    font-size: 25px;
+}
+
+.product-details p {
+    text-align: justify;
+    font-size: 15px;
+}
