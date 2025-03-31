@@ -142,7 +142,7 @@ def crear_producto_fetch(request):
 
         name = body.get("name")
         precio = body.get("precio")
-        localidad_id = body.get("localidad_id")
+        localidad_id = body.get("localidades_id")
 
         print("name:",name,"precio:",precio,"localidad_id:",localidad_id)
 
@@ -163,10 +163,11 @@ def crear_producto_fetch(request):
         if not Localidad:
             return JsonResponse({"error": "Tiene que asignarse una localidad existente."}, status=400)
 
+
         Producto = productos(
             name=name,
             precio=precio,
-            localidad_id=Localidad
+            localidades_id=Localidad
         )
         Producto.save()
 
