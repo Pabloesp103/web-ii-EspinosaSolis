@@ -60,7 +60,7 @@ return (
             })}
 
             {(!products || products.length === 0) &&
-            <p>No se pudo encontrar ningun producto.</p>
+            <p className="no-product">No se pudo encontrar ningun producto.</p>
             }
             
         </div>

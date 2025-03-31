@@ -32,3 +32,9 @@
     text-align: justify;
     font-size: 15px;
 }
+
+.no-product {
+    display: flex;
+    justify-content: center;
+    color: red;
+}

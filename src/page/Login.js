@@ -35,13 +35,13 @@ export default function Login() {
                     <h3>Login</h3>
                     <form className="formLogin" onSubmit={handleSubmit}>
                         <div>
-                            <input className="login-input" type="text" name="user" placeholder="User" />
+                            <input onChange={handleUserChange} className="login-input" type="text" name="user" placeholder="User" />
                         </div>
                         <div>
-                            <input className="login-input" type="password" name="password" value="" placeholder="Password" />
+                            <input onChange={handlePasswordChange} className="login-input" type="password" name="password" value="" placeholder="Password" />
                         </div>
                         <div className="login-button-container">
-                            <button className="login-button">Login</button>
+                            <button className="login-button" type='submit'>Login</button>
                         </div>
                     </form>
                 </div>
@@ -55,10 +55,9 @@ function fetLogIn(data, navigate) {
     fetch("https://dummyjson.com/auth/login", {
         method:"POST",
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(data),
-        credentials:"include"
     })
     .then(response => response.json())
     .then(response => {
