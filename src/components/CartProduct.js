@@ -36,4 +36,56 @@ export default function CartProduct({
 
         fetchProduct();
       }, [id]);
+
+
+
+///////////////////
+
+      const remove = () => {
+        removeCart(id);
+      };
+
+      const increase = () => {
+        if (increment && product.stock >= ammount) {
+            updateAmmount(id, ammount + 1);
+        }
+      };
+
+      const decrease = () => {
+        if (ammount > 1) {
+            updateAmmount(id, ammount - 1);
+        }
+      };
+
+      return (
+        <div className="cart-product" key={id}>
+            <div className="cart-img" onClick={}>
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <img src={product?.image?.[0] || image} alt={product?.name || "Product"} />
+                )}
+            </div>
+            <div>
+                <div className="cartTitle">
+                    <h4>{product?.name}</h4>
+                    <p>{product?.description}</p>
+                    <div>
+                        <p>En stock: {product?.stock}</p>
+                    </div>
+                </div>
+                <div className="total-price">
+                    <p>${(price * ammount).toFixed(2)}</p>
+                </div>
+                <div className="amm-btns">
+                    <button onClick={decrease} className="ammount-btn">-</button>
+                    <span>{ammount}</span>
+                    <button onClick={increase} className={`ammount-btn ${(increment || product?.stock <= ammount) ? 'disabled' : ''}`} disabled={(!increment || product?.stock <= ammount)}>+</button>
+                </div>
+                <div>
+                    <button onClick={remove}>Eliminar</button>
+                </div>
+            </div>
+        </div>
+      );
 }
