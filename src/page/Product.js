@@ -1,36 +1,62 @@
-import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProductListItem from "../components/ProductListItem";
+import { useEffect , useState } from "react";
+import "../style/products.css";
 
 export default function Product() {
-    const { id } = useParams();
-
     const [product, setProduct] = useState(null);
+    const [productId, setProductId] = useState(null);
+    const [word, setWord] = useState(null);
+    const [loading, setLoading] = useState(null);
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const data = await getProductById(id);
-            console.log(" ~ fetchProduct ~ data", data)
-            setProduct(data)
+            setLoading(true);
+
+            const data = await getProducts();
+            setProduct(data.product);
+
+            setLoading(false);
+        }
+        fetchProduct()
+    }, []);
+
+    useEffect(() => {
+        const hasWord = word !== null && word !== undefined && word.lenght > 0;
+
+        if(!hasWord) return;
+
+        const fetchWordProducts = async () => {
+            setLoading(true);
+
+            const data = await getProductsByWord(word)
+            setProduct(data.products);
+
+            setLoading(false);
         }
 
-        fetchProduct()
-    }, [id])
+        fetchWordProducts();
+    }, [word])
+
+
+
 
     return (
         <div>
-            {product && <ProductListItem 
-            title={product.title} 
-            id={product.id}
-            description={product.description}
-            images={product.images}
-            />
-            }
+
         </div>
     )
-}
 
-async function getProductById(id) {
-    const product = fetch(`https://dummyjson.com/products/${id}`);
-    return product.json()
+
+
+    async function getProducts() {
+        const product = await fetch("https://dummyjson.com/products");
+        return product.json();
+    }
+
+    async function getProductsByWord(word) {
+        const product = await fetch(`https://dummyjson.com/products/search?q=${word}`);
+        console.log(product)
+        return product.json();
+    }
 }

@@ -6,6 +6,9 @@ import Contact from "../page/Contact";
 import Login from "../page/Login";
 import Products from "../page/Products";
 import Product from "../page/Product";
+import Cart from "../page/Cart";
+import CreateProducts from "../page/CreateProduct";
+import ProductDetails from "../page/ProductDetails";
 
 export default function MyRouters() {
     return (
@@ -15,7 +18,10 @@ export default function MyRouters() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/product/:id" element={<Product />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/create-product" element={<CreateProducts />} />
+            <Route path="/product-details/:id" element={<ProductDetails />} />
         </Routes>
     )
 }

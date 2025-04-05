@@ -24,7 +24,7 @@ useEffect(() => {
 }, [])
 
 useEffect(() => {
-    const hasWord = word !== null && word !== undefined && word.length > 3;
+    const hasWord = word !== null && word !== undefined && word.length > 0;
 
     if(!hasWord) return;
 
@@ -42,7 +42,7 @@ return (
     <div>
         <div style={{ display: "flex", justifyContent: "center" }}>
             <input 
-            style={{ padding: "20px", width: "90%", margin: "auto" }}
+            style={{ padding: "20px", width: "90%", margin: "auto", marginTop: "1rem", marginBottom: "5rem" }}
             onChange={(e) => {
                 console.log(products)
                 setWord(e.target.value)}} />

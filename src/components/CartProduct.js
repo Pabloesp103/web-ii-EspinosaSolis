@@ -59,7 +59,7 @@ export default function CartProduct({
 
       return (
         <div className="cart-product" key={id}>
-            <div className="cart-img" onClick={}>
+            <div className="cart-img">
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
@@ -80,7 +80,7 @@ export default function CartProduct({
                 <div className="amm-btns">
                     <button onClick={decrease} className="ammount-btn">-</button>
                     <span>{ammount}</span>
-                    <button onClick={increase} className={`ammount-btn ${(increment || product?.stock <= ammount) ? 'disabled' : ''}`} disabled={(!increment || product?.stock <= ammount)}>+</button>
+                    <button onClick={increase} className={`ammount-btn ${(!increment || product?.stock <= ammount) ? 'disabled' : ''}`} disabled={(!increment || product?.stock <= ammount)}>+</button>
                 </div>
                 <div>
                     <button onClick={remove}>Eliminar</button>

@@ -13,7 +13,7 @@ export default function Login() {
     }
 
     const handlePasswordChange = (e) => {
-        setUser(e.target.value);
+        setPassword(e.target.value);
     }
 
     const handleSubmit = (e) => {
@@ -38,7 +38,7 @@ export default function Login() {
                             <input onChange={handleUserChange} className="login-input" type="text" name="user" placeholder="User" />
                         </div>
                         <div>
-                            <input onChange={handlePasswordChange} className="login-input" type="password" name="password" value="" placeholder="Password" />
+                            <input onChange={handlePasswordChange} className="login-input" type="password" name="password" placeholder="Password" />
                         </div>
                         <div className="login-button-container">
                             <button className="login-button" type='submit'>Login</button>
@@ -61,7 +61,7 @@ function fetLogIn(data, navigate) {
     })
     .then(response => response.json())
     .then(response => {
-        const hasNoToken = response?.accesToken === undefined
+        const hasNoToken = response?.accessToken === undefined
 
         if (hasNoToken) {
             alert("Usuario o contraseña incorrectos");
