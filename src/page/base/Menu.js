@@ -17,8 +17,12 @@ export default function Menu() {
                         <li><Link to="/about">Acerca de</Link></li>
                         <li><Link to="/contact">Contacto</Link></li>
                         <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/products">Products</Link></li>
+                        <li><Link to="/product">Product</Link></li>
+                        <li><Link to="/cart">Cart</Link></li>
                         <li><Link to="/create-product">Create Products</Link></li>
+                        <li><Link to="/usereducer-component">usereducer component</Link></li>
+
+                        <li><Link to="/calculadora">Calculadora</Link></li>
                     </ul>
                 </nav>
             </header>)}

@@ -1,11 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer } from 'react';
 import '../style/products.css'
 import CreateProductActions from '../functions/CreateProductActions';
 import { useFormStatus } from 'react-dom';
 
+function productAction(state, action) {
+    if(action.type == "CREATE_PRODUCT") {
+        const data = {
+            title: action.payload.title,
+            description: action.payload.description,
+            category: action.payload.category,
+            price: action.payload.price,
+        }
+    }
+}
+
 export default function CreateProducts() {
 
     const [categories, setCategories] = useState([])
+    const [state, dispatch] = useReducer(productAction, {
+        title: "",
+        description: "",
+        catgory: "",
+        price: 0,
+    })
+
     useEffect(() => {
         async function fetchCategories() {
             const response = await fetch('https://dummyjson.com/products/categories')
@@ -48,7 +66,7 @@ export default function CreateProducts() {
 
                 <div>
                     <h4>Description</h4>
-                    <input name='description' />
+                    <input style={{ display: "flex", width: "90%", borderRadius: "4px", boxSizing: "border-box", padding: "10px", paddingLeft: "10px" }} name='description' />
                 </div>
 
                 <div>           
@@ -71,11 +89,22 @@ export default function CreateProducts() {
                 <div>
                     <ButtonSave />
                 </div>
+
+                <div>
+                    <button onClick={() => dispatch({ type: "CREATE_PRODUCT" })}>Guardar</button>
+                </div>
             </div>
         </div>
         );
 
 }
+
+
+// function ButtonWithReducerCreate() {
+//     return (
+//         <button onClick={() => }>Guardar</button>
+//     )
+// }
 
 
 function ButtonSave() {

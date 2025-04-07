@@ -10,7 +10,6 @@ export default function Cart() {
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem("cart")) || [];
         setCart(saved);
-
         
     }, []);
 

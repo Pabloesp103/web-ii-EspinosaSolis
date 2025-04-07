@@ -14,36 +14,58 @@ export default function Product() {
             setLoading(true);
 
             const data = await getProducts();
-            setProduct(data.product);
+            setProduct(data.products);
+            console.log(data);
 
             setLoading(false);
         }
         fetchProduct()
     }, []);
 
-    useEffect(() => {
-        const hasWord = word !== null && word !== undefined && word.lenght > 0;
+useEffect(() => {
+    const hasWord = word !== null && word !== undefined && word.length > 0;
 
-        if(!hasWord) return;
+    if(!hasWord) return;
 
-        const fetchWordProducts = async () => {
-            setLoading(true);
+    const fetchProductsByWord = async() => {
+        try{const data = await getProductsByWord(word);
+            setProduct(data.products)}
 
-            const data = await getProductsByWord(word)
-            setProduct(data.products);
+        catch(error) {console.log(error)}
+    }
 
-            setLoading(false);
-        }
-
-        fetchWordProducts();
-    }, [word])
+    fetchProductsByWord()
+}, [word])
 
 
 
 
     return (
         <div>
-
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <input 
+                style={{ padding: "20px", width: "90%", margin: "auto", marginTop: "1rem", marginBottom: "5rem" }}
+                onChange={(e) => {
+                    setWord(e.target.value)}} />
+            </div>
+            <div className="container-products">
+                
+                {product && product.map((item) => {
+                    return (
+                        <ProductListItem
+                            title={item.title}
+                            id={item.id}
+                            description={item.description}
+                            images={item.images}
+                        />
+                    )
+                })}
+        
+                {(!product || product.length === 0) &&
+                <p className="no-product">No se pudo encontrar ningun producto.</p>
+                }
+                    
+            </div>
         </div>
     )
 

@@ -9,6 +9,8 @@ import Product from "../page/Product";
 import Cart from "../page/Cart";
 import CreateProducts from "../page/CreateProduct";
 import ProductDetails from "../page/ProductDetails";
+import ReducerScreen from "../page/ReducerScreen";
+import Calculadora from "../page/Calculadora";
 
 export default function MyRouters() {
     return (
@@ -22,6 +24,9 @@ export default function MyRouters() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/create-product" element={<CreateProducts />} />
             <Route path="/product-details/:id" element={<ProductDetails />} />
+            <Route path="/usereducer-component" element={<ReducerScreen />} />
+
+            <Route path="/calculadora" element={<Calculadora />} />
         </Routes>
     )
 }

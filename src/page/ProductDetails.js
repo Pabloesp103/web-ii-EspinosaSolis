@@ -87,7 +87,7 @@ export default function ProductDetails() {
                             {inCart ? (
                                 <button className="alrCartBtn" disabled>Ya en el carrito</button>
                             ) : (
-                                <button>Agregar al carrito</button>
+                                <button onClick={addCart}>Agregar al carrito</button>
                             )
                         }
                         </div>
@@ -100,6 +100,6 @@ export default function ProductDetails() {
 }
 
 async function getProductById(id) {
-    const product = fetch(`https://dummyjson.com/products/${id}`);
+    const product = await fetch(`https://dummyjson.com/products/${id}`);
     return product.json()
 }
