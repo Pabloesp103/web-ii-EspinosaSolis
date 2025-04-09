@@ -56,7 +56,7 @@ export default function ProductDetails() {
 
         const repeatedItem = cart.find((item) => item.id === product.id);
         if (!repeatedItem) {
-            const updCart = [...cart, {id: product, price: product.price, ammount: 1}];
+            const updCart = [...cart, {id: product.id, price: product.price, ammount: 1}];
             setCart(updCart);
             localStorage.setItem("cart", JSON.stringify(updCart));
         }

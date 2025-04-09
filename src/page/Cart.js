@@ -11,6 +11,7 @@ export default function Cart() {
         const saved = JSON.parse(localStorage.getItem("cart")) || [];
         setCart(saved);
         
+        totalPrice(saved);
     }, []);
 
     const totalPrice = (cart) => {
@@ -48,7 +49,7 @@ export default function Cart() {
 
     const increment = (item) => {
         const newTotal = total + item.price;
-        return newTotal;
+        return newTotal <= 10000;
     }
 
 
@@ -80,7 +81,7 @@ export default function Cart() {
             <div>
                 <h3>Precio Final</h3>
                 <div>
-                    <p>${total.toFixed(2)}</p>
+                    <p>${total}</p>
                 </div>
             </div>
         </div>

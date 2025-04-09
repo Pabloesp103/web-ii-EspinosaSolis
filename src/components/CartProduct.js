@@ -5,7 +5,7 @@ export default function CartProduct({
     name,
     id,
     description,
-    image,
+    images,
     price,
     ammount,
     removeCart,
@@ -17,9 +17,7 @@ export default function CartProduct({
 
     const navigate = useNavigate();
 
-    const images =
-      image?.[0] ??
-      "https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png";
+    const image = "https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png";
 
       useEffect(() => {
         const fetchProduct = async () => {
@@ -63,19 +61,19 @@ export default function CartProduct({
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
-                    <img src={product?.image?.[0] || image} alt={product?.name || "Product"} />
+                    <img src={product?.images?.[0] || image} alt={product?.name || "Product"} />
                 )}
             </div>
             <div>
                 <div className="cartTitle">
-                    <h4>{product?.name}</h4>
+                    <h4>{product?.title}</h4>
                     <p>{product?.description}</p>
                     <div>
                         <p>En stock: {product?.stock}</p>
                     </div>
                 </div>
                 <div className="total-price">
-                    <p>${(price * ammount).toFixed(2)}</p>
+                    <p>${(price * ammount)}</p>
                 </div>
                 <div className="amm-btns">
                     <button onClick={decrease} className="ammount-btn">-</button>
