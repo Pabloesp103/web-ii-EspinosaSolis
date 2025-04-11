@@ -54,34 +54,36 @@ export default function Cart() {
 
 
     return (
-        <div>
-            <h1 style={{ textAlign: "center" }}>Carrito de Compras</h1>
+        <div style={{ background: "linear-gradient(to bottom right, #1b1035, #3a1949)", color: "#1e1e1e", padding: "2rem", minHeight: "100vh", display: "flex", justifyContent: "center" }}>
+            <div style={{ background: "#fff", borderRadius: "1.5rem", boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)", padding: "2rem", maxWidth: "900px" }}>
+                <h1 style={{ textAlign: "center" }}>Carrito de Compras</h1>
 
-            <div>
-                {cart.length === 0 ? (
-                    <p>Carrito Vacio</p>
-                ) : (
-                    cart.map((item) => (
-                        <CartProduct 
-                        key={item.id}
-                        name={item.name}
-                        id={item.id}
-                        description={item.description}
-                        image={item.image}
-                        price={item.price}
-                        ammount={item.ammount}
-                        removeCart={removeCart}
-                        updateAmmount={updateAmmount}
-                        increment={increment(item)}
-                        />
-                    ))
-                )}
-            </div>
+                <div className='cartProduct'>
+                    {cart.length === 0 ? (
+                        <p>Carrito Vacio</p>
+                    ) : (
+                        cart.map((item) => (
+                            <CartProduct 
+                            key={item.id}
+                            name={item.name}
+                            id={item.id}
+                            description={item.description}
+                            image={item.image}
+                            price={item.price}
+                            ammount={item.ammount}
+                            removeCart={removeCart}
+                            updateAmmount={updateAmmount}
+                            increment={increment(item)}
+                            />
+                        ))
+                    )}
+                </div>
 
-            <div>
-                <h3>Precio Final</h3>
-                <div>
-                    <p>${total}</p>
+                <div style={{ textAlign: "center" }}>
+                    <h2>Precio Final</h2>
+                    <div>
+                        <p>${total}</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -69,32 +69,36 @@ export default function ProductDetails() {
 /////////////////////////////////////
 
     return (
-        <div>
-            {loading ? (
-                <div>
-                    <p>Loading details...</p>
-                </div>
-            ) : (
-                product && (
-                    <div>
+        <div style={{ background: "linear-gradient(to bottom right, #1b1035, #3a1949)", color: "#1e1e1e", padding: "2rem", minHeight: "70vh", display: "flex", justifyContent: "center", alignContent: "center" }}>
+            <div style={{ background: "#fff", borderRadius: "1.5rem", boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)", padding: "2rem", maxWidth: "900px", maxHeight: "30vh" }}>
+                <div style={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
+                    {loading ? (
                         <div>
-                            <h4>{product.name}</h4>
-                            <p>{product.description}</p>
-                            <h5>${product.price}</h5>
+                            <p>Loading details...</p>
                         </div>
+                    ) : (
+                        product && (
+                            <div style={{ display: "flex", justifyContent: "center", alignContent: "center", flexDirection: "column" }}>
+                                <div style={{ display: "flex", justifyContent: "center", alignContent: "center", flexDirection: "column"  }}>
+                                    <h3>{product.title}</h3>
+                                    <p>{product.description}</p>
+                                    <h4>${product.price}</h4>
+                                </div>
 
-                        <div>
-                            {inCart ? (
-                                <button className="alrCartBtn" disabled>Ya en el carrito</button>
-                            ) : (
-                                <button onClick={addCart}>Agregar al carrito</button>
-                            )
-                        }
-                        </div>
-                    </div>
-                )
-            )
-            }
+                                <div style={{ display: "flex", justifyContent: "center" }}>
+                                    {inCart ? (
+                                        <button className="alrCartBtn" disabled>Ya en el carrito</button>
+                                    ) : (
+                                        <button onClick={addCart}>Agregar al carrito</button>
+                                    )
+                                }
+                                </div>
+                            </div>
+                        )
+                    )
+                    }
+                </div>
+            </div>
         </div>
     )
 }

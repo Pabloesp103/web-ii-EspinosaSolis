@@ -57,7 +57,7 @@ export default function CartProduct({
 
       return (
         <div className="cart-product" key={id}>
-            <div className="cart-img">
+            <div className="cart-img"  style={{ textAlign: "center" }}>
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
@@ -65,22 +65,22 @@ export default function CartProduct({
                 )}
             </div>
             <div>
-                <div className="cartTitle">
+                <div className="cartTitle" >
                     <h4>{product?.title}</h4>
                     <p>{product?.description}</p>
                     <div>
-                        <p>En stock: {product?.stock}</p>
+                        <p  style={{ textAlign: "center" }}>En stock: {product?.stock}</p>
                     </div>
                 </div>
-                <div className="total-price">
+                <div className="total-price" style={{ textAlign: "center" }}>
                     <p>${(price * ammount)}</p>
                 </div>
-                <div className="amm-btns">
+                <div className="amm-btns" style={{ textAlign: "center", gap: "5px", padding: "5px" }}>
                     <button onClick={decrease} className="ammount-btn">-</button>
-                    <span>{ammount}</span>
+                    <span  style={{ marginLeft:"10px", marginRight: "10px"}}>{ammount}</span>
                     <button onClick={increase} className={`ammount-btn ${(!increment || product?.stock <= ammount) ? 'disabled' : ''}`} disabled={(!increment || product?.stock <= ammount)}>+</button>
                 </div>
-                <div>
+                <div style={{ justifyContent: "center", display: "flex", marginTop: "20px" }}>
                     <button onClick={remove}>Eliminar</button>
                 </div>
             </div>

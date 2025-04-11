@@ -1,12 +1,17 @@
 .background {
     color: blue;
     background-color: blue;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .containerLogin {
     border: 1px red solid;
-    width: 50%;
+    min-width: 50rem;
     margin: auto;
     border-radius: 10px;
     padding: 20px;
