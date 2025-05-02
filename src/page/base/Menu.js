@@ -14,15 +14,8 @@ export default function Menu() {
                 <nav>
                     <ul>
                         <li><Link to="/">Inicio</Link></li>
-                        <li><Link to="/about">Acerca de</Link></li>
-                        <li><Link to="/contact">Contacto</Link></li>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/product">Product</Link></li>
-                        <li><Link to="/cart">Cart</Link></li>
-                        <li><Link to="/create-product">Create Products</Link></li>
-                        <li><Link to="/usereducer-component">usereducer component</Link></li>
-
-                        <li><Link to="/calculadora">Calculadora</Link></li>
+                        <li><Link to="/chapters">Chapters</Link></li>
+                        <li><Link to="/characters">Characters</Link></li>
                     </ul>
                 </nav>
             </header>)}

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
-import ProductListItem from "../components/ProductListItem";
+import ProductListItem from "../components/ChapterItem";
 import '../style/products.css'
 
 export default function ProductDetails() {

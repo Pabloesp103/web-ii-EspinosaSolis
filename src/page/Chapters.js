@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import ProductListItem from "../components/ProductListItem";
+import ProductListItem from "../components/ChapterItem";
 import { useEffect , useState } from "react";
 import "../style/products.css";
 
