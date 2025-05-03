@@ -27,7 +27,7 @@ export default function Home() {
             ) : null}
 
             <div>
-                {search.map((property) => (
+                {properties.map((property) => (
                     <PropertyItem key={property.id} property={property} />
                 ))}
             </div>
