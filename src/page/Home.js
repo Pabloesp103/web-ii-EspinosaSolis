@@ -1,30 +1,35 @@
-
+import "../style/property.css";
+import React, { useState, useEffect } from "react";
+import HeroComp from "../components/HeroComp";
+import PropertyItem from "../components/PropertyItem";
 
 export default function Home() {
+    const [search, setSearch] = useState("");
+    const [properties, setProperties] = useState([]);
+
+    useEffect(() => {
+        fetch("https://raw.githubusercontent.com/devchallenges-io/curriculum/refs/heads/main/4-frontend-libaries/challenges/group_1/data/property-listing-data.json")
+        .then((response) => response.json())
+        .then((data) => {
+            setProperties(data);
+        })
+        .catch((error) => {
+            console.error("Error en el fetch", error);
+        });
+    }, []);
+
     return (
         <div class="Main-Container">
-            <div class="Title-Container">
-                <h1 class="Main-Title">Bienvenido a la pagina de Rick and Morty!</h1>
-                <p>Aqui puedes encontrar diversos episodios y a sus respectivos personajes.</p>
-            </div>
+            <HeroComp inputChange={setSearch} />
+
+            {search.length <= 0 ? (
+                <p>No se ha podido encontrar "{search}"</p>
+            ) : null}
+
             <div>
-                <h2 class="Sec-Title">En esta pagina puedes:</h2>
-                <div class="Multi-Container">
-                    <div class="Feature-Container">
-                        <h3 class="Feature">Ir a la lista de Episodios</h3>
-                    </div>
-                    <div class="Feature-Container">
-                        <h3 class="Feature">Ver la lista de Personajes</h3>
-                    </div>
-                </div>
-                <div class="Multi-Container">
-                    <Link to="/chapters" className="btn1">
-                        Lista de Episodios
-                    </Link>
-                    <Link to="/characters" className="btn1">
-                        Lista de Personajes
-                    </Link>
-                </div>
+                {search.map((property) => (
+                    <PropertyItem key={property.id} property={property} />
+                ))}
             </div>
         </div>
     );
