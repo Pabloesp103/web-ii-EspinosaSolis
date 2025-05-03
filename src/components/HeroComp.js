@@ -1,8 +1,6 @@
 import "../style/property.css";
 import React from "react";
 
-    const mainImage = new URL();
-
     export default function HeroComp({ inputChange }) {
         const handleInput = (e) => {
             inputChange(e.target.value);

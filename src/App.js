@@ -1,10 +1,9 @@
-
-
-import Menu from "./page/base/Menu"
+import React from "react";
+import MyRouters from './router/Router';
 
 function App() {
   return (
-    <Menu />
+    <MyRouters />
   );
 }
 

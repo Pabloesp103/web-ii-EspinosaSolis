@@ -2,7 +2,7 @@ import "../style/property.css";
 import { FaHome, FaUser } from "react-icons/fa";
 import React from "react";
 
-export default function CharacterItem({ character }) {
+export default function PropertyItem({ property }) {
     return(
         <div>
             <div>
