@@ -18,15 +18,19 @@ export default function Home() {
         });
     }, []);
 
+    const filterResult = search.trim() === "" ? properties : properties.filter((property) =>
+    property.description && property.description.includes(search)
+);
+
     return (
-        <div class="Main-Container">
+        <div class="Main-Container" style={{ backgroundSize: "cover", backgroundColor: "#0d0d1a" }}>
             <HeroComp inputChange={setSearch} />
 
             {search.length <= 0 ? (
                 <p>No se ha podido encontrar "{search}"</p>
             ) : null}
 
-            <div>
+            <div className="properties" style={{ color: "#f0f0f0", display: "grid", gridTemplateColumns: "repeat(3, 1fr", gap: "20px", padding: "30px" }}>
                 {properties.map((property) => (
                     <PropertyItem key={property.id} property={property} />
                 ))}

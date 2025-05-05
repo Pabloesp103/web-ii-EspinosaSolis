@@ -1,0 +1,11 @@
+@media (max-width: 1024px) {
+    .properties {
+      grid-template-columns: repeat(3, 1fr); 
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .properties {
+      grid-template-columns:  repeat(1, 1fr); 
+    }
+  }

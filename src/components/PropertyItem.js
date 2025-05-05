@@ -4,37 +4,29 @@ import React from "react";
 
 export default function PropertyItem({ property }) {
     return(
-        <div>
-            <div>
-                <div>
-                    {property.superhost && (
-                        <span>Superhost ⭐</span>
-                    )}
-                    <img src={property.image} alt={property.title}/>
+        <div style={{ backgroundColor: "#13132b", borderRadius: "12px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                <div style={{  }}>
+                    {property.superhost && ( <span style={{ backgroundColor: "#f2f2f2", color: "#333", borderRadius: "4px", padding: "4px 8px", fontWeight: "bold" }}>Superhost ⭐</span> )}
+                    <img src={property.image} alt={property.title} style={{ width: "100%", height: "180px", objectFit: "cover" }}/>
                 </div>
-                <div>
-                    <div>
-                        <h3>{property.title}</h3>
-                    </div>
-                    <p>{property.description}</p>
-                    <div>
-                        <div>
+                <div style={{ color: "white", padding: "16px" }}>
+                    <h3 style={{ margin: "0 0 6px" }}>{property.title}</h3>
+                    <p style={{ color: "#ccc", marginBottom: "12px" }}>{property.description}</p>
+                    <div style={{ display: "flex", justifyContent: "space-between" , color: "#ccc", marginBottom: "12px" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                             <FaHome />
                             <p>{property.capacity.bedroom} BedRoom</p>
                         </div>
-                        <div>
+                        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                             <FaUser />
                             <p>{property.capacity.people} Guest</p>
                         </div>
                     </div>
-                    <div>
-                        <p>${property.price} /night</p>
-                        <div>
-                            <p>⭐ {property.rating}</p>
-                        </div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <p style={{ fontWeight: "bold" }}>${property.price} /night</p>
+                        <p>⭐ {property.rating}</p>
                     </div>
                 </div>
-            </div>
         </div>
     );
 }
