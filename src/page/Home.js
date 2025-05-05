@@ -30,8 +30,8 @@ export default function Home() {
                 <p>No se ha podido encontrar "{search}"</p>
             ) : null}
 
-            <div className="properties" style={{ color: "#f0f0f0", display: "grid", gridTemplateColumns: "repeat(3, 1fr", gap: "20px", padding: "30px" }}>
-                {properties.map((property) => (
+            <div className="properties">
+                {filterResult.map((property) => (
                     <PropertyItem key={property.id} property={property} />
                 ))}
             </div>
