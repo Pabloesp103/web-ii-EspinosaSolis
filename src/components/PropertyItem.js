@@ -6,7 +6,7 @@ export default function PropertyItem({ property }) {
     return(
         <div style={{ backgroundColor: "#13132b", borderRadius: "12px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
                 <div style={{  }}>
-                    {property.superhost && ( <span style={{ backgroundColor: "#f2f2f2", color: "#333", borderRadius: "4px", padding: "4px 8px", fontWeight: "bold" }}>Superhost ⭐</span> )}
+                    {property.superhost && ( <span style={{ backgroundColor: "#612041", color: "#f8ebf2", borderRadius: "4px", padding: "4px 8px", fontWeight: "bold", position: "absolute", marginLeft: "27spx", marginTop: "12px" }}>Superhost ⭐</span> )}
                     <img src={property.image} alt={property.title} style={{ width: "100%", height: "180px", objectFit: "cover" }}/>
                 </div>
                 <div style={{ color: "white", padding: "16px" }}>
