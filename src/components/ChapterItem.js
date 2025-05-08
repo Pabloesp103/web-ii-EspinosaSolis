@@ -74,7 +74,7 @@ import { Link } from "react-router-dom";
                         <Link to={`/chapter/${episode.id}`}>Ver Detalles</Link>
                     </div>
                     <div>
-                        <button onClick={handleLikes}>Like ({state.like})</button>
+                        <button onClick={handleLikes}>Like ({state.likes})</button>
                         <button onClick={handleDislikes}>Dislike ({state.dislikes})</button>
                     </div>
                 </div>

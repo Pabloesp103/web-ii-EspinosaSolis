@@ -1,109 +1,123 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
-import ProductListItem from "../components/ChapterItem";
-import '../style/products.css'
+import CharacterItem from "../components/CharacterItem";
+import '../style/chapter.css'
 
-export default function ProductDetails() {
-    const { id } = useParams();
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(null);
-
-    const [cart, setCart] = useState(() => {
-        const savedCart = localStorage.getItem("cart");
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
+export default function ChapterDetails() {
+    const { chapterId } = useParams();
+    const [chapterName, setChapterName] = useState("");
+    const [chapterAirDate, setChapterAirDate] = useState("");
+    const [chapterCode, setChapterCode] = useState("");
+    const [characters, setCharacters] = useState([]);
+    const [likedCharacters, setLikedCharacters] = useState([]);
 
     useEffect(() => {
-        const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-        setCart(savedCart);
-    }, []);
+        async function fetchChapter() {
+            try {
+                const res = await fetch(
+                    `https://rickandmortyapi.com/api/episode/${chapterId}`
+                );
+                const data = await res.json();
 
-    useEffect(() => {
-        const fetchProduct = async () => {
-            setLoading(true);
+                setChapterName(data.name);
+                setChapterAirDate(data.air_date);
+                setChapterCode(data.episode);
 
-            const data = await getProductById(id);
-            console.log(" ~ fetchProduct ~ data", data);
-            setProduct(data);
+                const characterURL = data.characters.slice(0, 4);
+                const fetchCharacters = await Promise.all(
+                    characterURL.map((url) =>
+                    fetch(url).then((res) => res.json()))
+                );
+                setCharacters(fetchCharacters);
 
-            setLoading(false);
+                updateLikes();
+            } catch(error) {
+                console.error("Error al cargar el episodio", error);
+            }
         }
+        fetchChapter();
+    }, [chapterId]);
 
-        fetchProduct()
-    }, [id]);
-
-    const addCart = () => {
-        if (!product) return;
-
-        if(!Array.isArray(cart)) {
-            setCart([]);
-            localStorage.setItem("cart", JSON.stringify([]));
-            return;
-        }
-
-        if (cart.length >= 5) {
-            alert("No se puede tener mas de 5 productos diferentes.");
-            return;
-        }
-
-        const totalCart = cart.reduce((sum, item) => sum + item.price * item.ammount, 0);
-        if (totalCart + product.price > 10000) {
-            alert("El precio total no puede ser mayor a $10,000.");
-            return;
-        }
-
-////////////////////////////////////
-
-        const repeatedItem = cart.find((item) => item.id === product.id);
-        if (!repeatedItem) {
-            const updCart = [...cart, {id: product.id, price: product.price, ammount: 1}];
-            setCart(updCart);
-            localStorage.setItem("cart", JSON.stringify(updCart));
-        }
+    function getLikes(characterId) {
+        const data = JSON.parse(localStorage.getItem("likedCharacters") || "{}" );
+        return data[episodeId]?.[characterId] || 0;
     }
 
-    const inCart = Array.isArray(cart) && cart.some((item) => item.id === product?.id);
+    function updateLikes() {
+        const storedLikes = JSON.parse(
+            localStorage.getItem("likedCharacters") || "{}"
+        );
 
-    const image = "https://www.mountaingoatsoftware.com/uploads/blog/2016-09-06-what-is-a-product.png";
+        const chapterLikes = storedLikes[episodeId] || {};
 
-/////////////////////////////////////
+        const mostLiked = Object.entries(chapterLikes)
+        .sort((a, b) => b[1] - a[1]).slice(0, 3).map(([id]) => id);
 
-    return (
-        <div style={{ background: "linear-gradient(to bottom right, #1b1035, #3a1949)", color: "#1e1e1e", padding: "2rem", minHeight: "70vh", display: "flex", justifyContent: "center", alignContent: "center" }}>
-            <div style={{ background: "#fff", borderRadius: "1.5rem", boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)", padding: "2rem", maxWidth: "900px", maxHeight: "30vh" }}>
-                <div style={{ display: "flex", justifyContent: "center", alignContent: "center" }}>
-                    {loading ? (
-                        <div>
-                            <p>Loading details...</p>
-                        </div>
-                    ) : (
-                        product && (
-                            <div style={{ display: "flex", justifyContent: "center", alignContent: "center", flexDirection: "column" }}>
-                                <div style={{ display: "flex", justifyContent: "center", alignContent: "center", flexDirection: "column"  }}>
-                                    <h3>{product.title}</h3>
-                                    <p>{product.description}</p>
-                                    <h4>${product.price}</h4>
-                                </div>
+        Promise.all(
+            mostLiked.map((id) =>
+                fetch(`https://rickandmortyapi.com/api/character/${id}`)
+                .then((res) =>
+                    res.json()
+                )
+            )
+        )
+        .then((characters) => {
+            setLikedCharacters(characters);
+        });
+    }
 
-                                <div style={{ display: "flex", justifyContent: "center" }}>
-                                    {inCart ? (
-                                        <button className="alrCartBtn" disabled>Ya en el carrito</button>
-                                    ) : (
-                                        <button onClick={addCart}>Agregar al carrito</button>
-                                    )
-                                }
-                                </div>
-                            </div>
-                        )
-                    )
-                    }
-                </div>
+    function likeToCharacter(characterId) {
+        const key = "likedCharacters";
+        const data = JSON.parse(localStorage.getItem(key) || "{}");
+    
+        if (!data[episodeId]) data[episodeId] = {};
+        if (!data[episodeId][characterId]) data[episodeId][characterId] = 0;
+        data[episodeId][characterId] += 1;
+        localStorage.setItem(key, JSON.stringify(data));
+
+        updateLikes();
+    }
+    
+    return(
+        <div>
+            <div>
+                <h1>{chapterName}</h1>
+                {chapterAirDate && chapterCode && (
+                    <h2>{chapterCode} fue lanzado en {chapterAirDate}</h2>
+                )}
             </div>
+
+            <section>
+                <h2>Personajes mas votados del capitulo</h2>
+                <div>
+                    {likedCharacters.length === 0 ? (
+                        <p>Aun no hay personajes votados para este episodio</p>
+                    ) : (
+                        likedCharacters.map((chr) => (
+                            <div key={chr.id}>
+                                <CharacterItem character={chr} />
+                                <p>{getLikes(chr.id)} likes</p>
+                            </div>
+                        ))
+                    )}
+                </div>
+            </section>
+
+            <section>
+                <h3>Personajes del capitulo</h3>
+                <div>
+                    {characters.map((chr) => (
+                        <div key={chr.id}>
+                            <CharacterItem character={chr} />
+                            <p>{getLikes(chr.id)} likes</p>
+                            <div>
+                                <button onClick={() => likeToCharacter(chr.id)}>Like</button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
         </div>
-    )
+    );
 }
 
-async function getProductById(id) {
-    const product = await fetch(`https://dummyjson.com/products/${id}`);
-    return product.json()
-}
