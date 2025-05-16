@@ -50,16 +50,18 @@ export default function Home() {
     
     return (
         <div>
-            <div>
-                <h1>Chefs Academy Secrets</h1>
-                <p>New recipe for you to try out, let's cook!</p>
-            </div>
+            <section style={{ backgroundImage: "url('https://png.pngtree.com/background/20230513/original/pngtree-kitchen-cupboard-cartoon-picture-image_2511551.jpg')", backgroundSize: "cover", backgroundPosition: "center", padding: "180px 20px", textAlign: "center", color: "white" }}>
+                <div>
+                    <h1>Chefs Academy Secrets</h1>
+                    <p>New recipe for you to try out, let's cook!</p>
+                </div>
+            </section>
 
             <div style={{ display: "flex", flexDirection: "row", gap: "2rem", padding: "2rem" }}>
                 <aside style={{ minWidth: "200px", backgroundColor: "transparent" }}>
                     <CategoryItem categories={categories} selected={selectedCategory} onSelect={setSelectedCategory} />
                 </aside>
-                <div>
+                <div style={{ minWidth: "80%" }}>
                     <div style={{ display: "flex", gap: "1rem", marginBottom: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
                         <input type="text" placeholder="Search recipes and more..." value={search} onChange={(e) => setSearch(e.target.value)} style={{ padding: "0.8rem", flex: "1", borderRadius: "var(--border-radius)", border: "none", fontSize: "1rem" }}/>
                         <select onChange={(e) => setSort(e.target.value)} value={sort} style={{ padding: "0.8rem", borderRadius: "var(--border-radius)", border: "none", fontSize: "1rem" }}>

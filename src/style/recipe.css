@@ -1,10 +1,8 @@
 :root {
   --bg-color: #0f0f2d;
   --card-bg: #1e1e3f;
-  --text-color: #fff;
   --accent-color: #ffc107;
   --border-radius: 12px;
-  --transition: 0.3s ease-in-out;
 }
 
 body {
@@ -14,14 +12,20 @@ body {
   color: var(--text-color);
 }
 
+.recipes {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+}
+
 @media (max-width: 1024px) {
-  .properties {
-    grid-template-columns: repeat(2, 1fr); 
+  .recipes {
+    grid-template-columns: repeat(3, 1fr); 
   }
 }
 
 @media (max-width: 640px) {
-  .properties {
+  .recipes {
     grid-template-columns: 1fr; 
   }
 }
