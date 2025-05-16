@@ -1,39 +1,74 @@
-import "../style/property.css";
+import "../style/recipe.css";
 import React, { useState, useEffect } from "react";
-import HeroComp from "../components/HeroComp";
-import PropertyItem from "../components/PropertyItem";
+import RecipeItem from "../components/RecipeItem";
+import CategoryItem from "../components/CategoryItem";
 
 export default function Home() {
-    const [search, setSearch] = useState("");
-    const [properties, setProperties] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [recipes, setRecipes] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('Desert');
+    const [search, setSearch] = useState('');
+    const [sort, setSort] = useState('name');
 
     useEffect(() => {
-        fetch("https://raw.githubusercontent.com/devchallenges-io/curriculum/refs/heads/main/4-frontend-libaries/challenges/group_1/data/property-listing-data.json")
+        fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         .then((response) => response.json())
         .then((data) => {
-            setProperties(data);
+            setCategories(data.categories);
         })
         .catch((error) => {
             console.error("Error en el fetch", error);
         });
     }, []);
 
-    const filterResult = search.trim() === "" ? properties : properties.filter((property) =>
-    property.description && property.description.includes(search)
-);
 
+    useEffect(() => {
+        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`)
+        .then((response) => response.json())
+        .then((data) => {
+            setRecipes(data.meals || []);
+        })
+        .catch((error) => {
+            console.error("Error en el fetch", error);
+        });
+    }, [selectedCategory]);
+
+
+
+    const handleSort = (recipes) => {
+        return [...recipes].sort((a, b) => {
+            if (sort === 'name') return a.strMeal.localeCompare(b.strMeal);
+            return a.idMeal - b.idMeal;
+        });
+    };
+
+    const handleSearch = (recipes) => {
+        return recipes.filter(recipe => 
+            recipe.strMeal.toLowerCase().includes(search.toLowerCase())
+        );
+    };
+    
     return (
-        <div class="Main-Container" style={{ backgroundSize: "cover", backgroundColor: "#0d0d1a" }}>
-            <HeroComp inputChange={setSearch} />
+        <div>
+            <div>
+                <h1>Chefs Academy Secrets</h1>
+                <p>New recipe for you to try out, let's cook!</p>
+            </div>
 
-            {search.length <= 0 ? (
-                <p>No se ha podido encontrar "{search}"</p>
-            ) : null}
-
-            <div className="properties">
-                {filterResult.map((property) => (
-                    <PropertyItem key={property.id} property={property} />
-                ))}
+            <div style={{ display: "flex", flexDirection: "row", gap: "2rem", padding: "2rem" }}>
+                <aside style={{ minWidth: "200px", backgroundColor: "transparent" }}>
+                    <CategoryItem categories={categories} selected={selectedCategory} onSelect={setSelectedCategory} />
+                </aside>
+                <div>
+                    <div style={{ display: "flex", gap: "1rem", marginBottom: "1.5rem", flexWrap: "wrap", alignItems: "center" }}>
+                        <input type="text" placeholder="Search recipes and more..." value={search} onChange={(e) => setSearch(e.target.value)} style={{ padding: "0.8rem", flex: "1", borderRadius: "var(--border-radius)", border: "none", fontSize: "1rem" }}/>
+                        <select onChange={(e) => setSort(e.target.value)} value={sort} style={{ padding: "0.8rem", borderRadius: "var(--border-radius)", border: "none", fontSize: "1rem" }}>
+                            <option value="name">Sort by Name</option>
+                            <option value="id">Sort by ID</option>
+                        </select>
+                    </div>
+                    <RecipeItem recipes={handleSort(handleSearch(recipes))} />
+                </div>
             </div>
         </div>
     );

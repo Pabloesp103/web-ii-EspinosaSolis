@@ -1,0 +1,28 @@
+:root {
+  --bg-color: #0f0f2d;
+  --card-bg: #1e1e3f;
+  --text-color: #fff;
+  --accent-color: #ffc107;
+  --border-radius: 12px;
+  --transition: 0.3s ease-in-out;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+@media (max-width: 1024px) {
+  .properties {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 640px) {
+  .properties {
+    grid-template-columns: 1fr; 
+  }
+}
+
