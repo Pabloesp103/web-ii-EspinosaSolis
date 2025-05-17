@@ -28,6 +28,7 @@ body {
 @media (max-width: 640px) {
   .recipes {
     grid-template-columns: 1fr; 
+    padding: 20px;
   }
 }
 
@@ -36,26 +37,38 @@ body {
   .home-container{
      display: flex;
      flex-direction: row;
-     gap: 1rem;
      padding: 2rem;
   }
-  
+
   .ctg-container {
     width: 100%;
     display: flex;
     overflow-x: auto;
     padding-bottom: 1rem;
+    min-width: 200px;
+    background-color: transparent;
   }
 
   .ctgrs {
-    flex-direction: row;
     flex-wrap: nowrap;
     gap: 0.5rem;
+    display: grid;
+    flex-direction: column;
+    width: 70%;
   }
 
-    .search-bar {
+  .search-bar {
     flex-direction: column;
     align-items: stretch;
+
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .sort{
+    display: none;
   }
 }
 
@@ -67,5 +80,43 @@ body {
 
   .home-container {
     flex-direction: column;
+    padding: 20px;
+  }
+
+  .ctg-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  .ctgrs {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    display: grid;
+    flex-direction: column;
+    width: 70%;
+  }
+
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    gap: 10px;
+  }
+
+  .search {
+    max-width: 45%;
+  }
+
+  .sort{
+     padding: 0.8rem; 
+     border-radius: var(--border-radius);
+     border: none;
+     font-size: 1rem;
+     max-width: 45%;
+  }
+
+  .main-image {
+    max-height: 27rem;
   }
 }
