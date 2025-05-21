@@ -1,0 +1,17 @@
+.input-container input,
+.input-container select {
+    background-color: #ebf8f2;
+    color: #35543c;
+    border: 1px solid #2e3448;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border 0.2s ease;
+    min-width: 150px;
+}
+
+.input-container input::placeholder {
+    color: #35543c;
+}
+

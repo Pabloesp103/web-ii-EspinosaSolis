@@ -1,6 +1,6 @@
 import ChapterItem from "../components/ChapterItem";
 import { useEffect , useState } from "react";
-import "../style/chapter.css";
+import "../style/chapterlist.css";
 
 export default function Chapters() {
     const [seasonChapter, setSeasonChapter] = useState({});
@@ -34,12 +34,12 @@ export default function Chapters() {
 
 
     return (
-        <div>
-            <h1>Lista de Episodios</h1>
-            {Object.entries(seasonChapter).map(([seasonChapter, episodes]) => (
-                <div key={season}>
-                    <h2>{season}</h2>
-                    <div>
+        <div style={{ padding: "2rem", maxWidth: "1200px", margin: "auto" }}>
+            <h1 style={{ fontSize: "2.5rem", textAlign: "center", marginBottom: "2rem" }}>Lista de Episodios</h1>
+            {Object.entries(seasonChapter).map(([season, episodes]) => (
+                <div key={season} style={{ marginBottom: "3rem" }}>
+                    <h2 style={{ fontSize: "1.8rem", marginBottom: "1rem", color: "#ffcc00" }}>{season}</h2>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
                         {episodes.map(ch => (
                             <ChapterItem key={ch.id} episode={ch} />
                         ))}

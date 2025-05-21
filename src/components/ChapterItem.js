@@ -62,20 +62,19 @@ import { Link } from "react-router-dom";
 
         return (
             <div className="chapter-list-item">
-                <div>
+                <div style={{ backgroundColor: "#2a2a40", padding: "1.5rem", borderRadius: "10px", textDecoration: "none", color: "#fff", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                     <div>
-                        <span>Temporada: {season}</span>
                         <span>Episodio: {episode.episode}</span>
                     </div>
 
-                    <h2>{episode.name}</h2>
-                    <p>Dia de lanzamiento: {episode.air_date}</p>
+                    <h2 style={{ fontSize: "1.2rem", marginBottom: "0.5rem", color: "#61dafb" }}>{episode.name}</h2>
+                    <p style={{ margin: "0.2rem 0", fontSize: "0.95rem", color: "#ccc" }}>Dia de lanzamiento: {episode.air_date}</p>
                     <div>
                         <Link to={`/chapter/${episode.id}`}>Ver Detalles</Link>
                     </div>
-                    <div>
-                        <button onClick={handleLikes}>Like ({state.likes})</button>
-                        <button onClick={handleDislikes}>Dislike ({state.dislikes})</button>
+                    <div style={{ padding: "1rem", justifyContent: "center", display: "flex", gap: "3rem" }}>
+                        <button onClick={handleLikes} style={{ backgroundColor: "#79ffc1", borderRadius: "5px"}}>Like ({state.likes})</button>
+                        <button onClick={handleDislikes} style={{ backgroundColor: "#ef4646", borderRadius: "5px" }}>Dislike ({state.dislikes})</button>
                     </div>
                 </div>
             </div>

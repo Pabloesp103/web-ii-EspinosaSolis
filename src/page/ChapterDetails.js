@@ -40,7 +40,7 @@ export default function ChapterDetails() {
 
     function getLikes(characterId) {
         const data = JSON.parse(localStorage.getItem("likedCharacters") || "{}" );
-        return data[episodeId]?.[characterId] || 0;
+        return data[chapterId]?.[characterId] || 0;
     }
 
     function updateLikes() {
@@ -48,7 +48,7 @@ export default function ChapterDetails() {
             localStorage.getItem("likedCharacters") || "{}"
         );
 
-        const chapterLikes = storedLikes[episodeId] || {};
+        const chapterLikes = storedLikes[chapterId] || {};
 
         const mostLiked = Object.entries(chapterLikes)
         .sort((a, b) => b[1] - a[1]).slice(0, 3).map(([id]) => id);
@@ -70,31 +70,31 @@ export default function ChapterDetails() {
         const key = "likedCharacters";
         const data = JSON.parse(localStorage.getItem(key) || "{}");
     
-        if (!data[episodeId]) data[episodeId] = {};
-        if (!data[episodeId][characterId]) data[episodeId][characterId] = 0;
-        data[episodeId][characterId] += 1;
+        if (!data[chapterId]) data[chapterId] = {};
+        if (!data[chapterId][characterId]) data[chapterId][characterId] = 0;
+        data[chapterId][characterId] += 1;
         localStorage.setItem(key, JSON.stringify(data));
 
         updateLikes();
     }
     
     return(
-        <div>
+        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "2rem", fontFamily: "'Helvetica Neue', sans-serif", textAlign: "center", color: "#333" }}>
             <div>
-                <h1>{chapterName}</h1>
+                <h1 style={{ fontSize: "2rem", fontWeight: "300", letterSpacing: "1px", marginBottom: "1rem" }}>{chapterName}</h1>
                 {chapterAirDate && chapterCode && (
-                    <h2>{chapterCode} fue lanzado en {chapterAirDate}</h2>
+                    <h2 style={{ fontSize: "1rem", color: "purple", marginBottom: "2rem" }}>{chapterCode} fue lanzado en {chapterAirDate}</h2>
                 )}
             </div>
 
             <section>
-                <h2>Personajes mas votados del capitulo</h2>
-                <div>
+                <h2 style={{ fontWeight: "bold", color: "purple", marginBottom: "1.5rem" }}>Personajes mas votados del capitulo</h2>
+                <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginBottom: "3rem" }}>
                     {likedCharacters.length === 0 ? (
                         <p>Aun no hay personajes votados para este episodio</p>
                     ) : (
                         likedCharacters.map((chr) => (
-                            <div key={chr.id}>
+                            <div key={chr.id} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                                 <CharacterItem character={chr} />
                                 <p>{getLikes(chr.id)} likes</p>
                             </div>
@@ -104,14 +104,14 @@ export default function ChapterDetails() {
             </section>
 
             <section>
-                <h3>Personajes del capitulo</h3>
-                <div>
+                <h3 style={{ marginBottom: "1rem", fontWeight: "bold" }}>Personajes del capitulo</h3>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "6rem", marginTop: "1rem" }}>
                     {characters.map((chr) => (
-                        <div key={chr.id}>
+                        <div key={chr.id} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                             <CharacterItem character={chr} />
                             <p>{getLikes(chr.id)} likes</p>
                             <div>
-                                <button onClick={() => likeToCharacter(chr.id)}>Like</button>
+                                <button onClick={() => likeToCharacter(chr.id)} style={{ padding: "0.5rem 1rem", backgroundColor: "purple", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", marginTop: "0.5rem" }}>Like</button>
                             </div>
                         </div>
                     ))}

@@ -8,11 +8,11 @@ export default function Menu() {
 
     const noExiste = restringidos.indexOf(location.pathname) === -1;
     return(
-        <div className="App">
+        <div>
             {(noExiste && 
-            <header className="App-header">
-                <nav>
-                    <ul>
+            <header style={{ backgroundColor: "#ebf8f2", padding: "1rem 2rem" }}>
+                <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <ul style={{ listStyle: "none", display: "flex", gap: "2rem", margin: "0" }}>
                         <li><Link to="/">Inicio</Link></li>
                         <li><Link to="/chapters">Chapters</Link></li>
                         <li><Link to="/characters">Characters</Link></li>
